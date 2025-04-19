@@ -1,9 +1,11 @@
+// ─────────────────────────────────────────────────────────────
 // testExoDefi.js
-// Série de défis pour maîtriser le scope, var, let, const et hoisting en JavaScript
-// 🔥 Par Mister Jo 💪
-// Ce fichier inclut les réponses de Mister Jo et les corrections avec explications.
+// 🔥 Série de défis pour maîtriser le scope, var, let, const et hoisting en JavaScript
+// 💡 Par Mister Jo 💪
+// Ce fichier inclut les réponses de Mister Jo et les corrections avec explications détaillées.
+// ─────────────────────────────────────────────────────────────
 
-// ---
+
 // 🔥 Défi 1 : Comprendre la portée dans un bloc
 function testScope() {
     let x = 5;
@@ -26,7 +28,7 @@ function testScope() {
   // Explication : `let` a une portée de bloc. Le `x = 10` dans le `if` est une nouvelle variable
   // distincte du `x = 5` dans la fonction. Ils ne s’affectent pas.
   
-  // ---
+  
   // 🔥 Défi 2 : `var` et re-déclaration
   function varTest() {
     var a = 1;
@@ -48,7 +50,7 @@ function testScope() {
   // Explication : `var` a une portée fonctionnelle. La redéclaration de `a = 2` dans le `if`
   // modifie la même variable `a` de la fonction, car `var` ignore les blocs.
   
-  // ---
+  
   // 🔥 Défi 3 : `const` et réaffectation
   function testConst() {
     const message = "Hello Mister Jo";
@@ -66,7 +68,7 @@ function testScope() {
   // Explication : `const` empêche la réassignation. Tenter de changer `message` provoque
   // une erreur : TypeError: Assignment to constant variable.
   
-  // ---
+  
   // 🔥 Défi 4 : `let` dans une boucle – logique de piège
   function testLoopLet() {
     for (let i = 0; i < 3; i++) {
@@ -86,7 +88,7 @@ function testScope() {
   // Explication : `let` crée une nouvelle variable `i` à chaque itération (portée de bloc).
   // Chaque `setTimeout` capture son propre `i`, donc on obtient 0, 1, 2 après 1 seconde.
   
-  // ---
+  
   // 🔥 Défi 5 : `var` dans une boucle – attention danger
   function testLoopVar() {
     for (var i = 0; i < 3; i++) {
@@ -109,7 +111,7 @@ function testScope() {
   // Explication : Contrairement à `let`, `var` ne crée pas une nouvelle variable à chaque
   // tour. Tous les `setTimeout` partagent le même `i`, qui vaut 3 à la fin de la boucle.
   
-  // ---
+  
   // 🔥 Défi 6 : Re-déclaration invisible avec `var`
   function demo() {
     console.log(x); // Affiche undefined
@@ -129,16 +131,10 @@ function testScope() {
   // Q2 : Pas d’erreur car `var x` est **hoisté** (déplacé en haut de la fonction).
   // Q3 : JS traite `var` en déclarant `x` en haut, mais sans valeur (`undefined`).
   // Explication : Le hoisting fait que `var x` est déclaré avant l’exécution, mais
-  // l’initialisation (`x = 7`) reste à sa place. C’est comme si le code était :
-  // ```js
-  // var x;
-  // console.log(x); // undefined
-  // x = 7;
-  // console.log(x); // 7
-  // ```
+  // l’initialisation (`x = 7`) reste à sa place.
   
-  // ---
-  // 🔥 Défi 7 : Le mix explosif : `var`, `let`, `const`, portée + hoisting
+  
+  // 🔥 Défi 7 : Le mix explosif – `var`, `let`, `const`, portée + hoisting
   function test() {
     console.log(a); // Affiche undefined
     // console.log(b); // Provoque une erreur : ReferenceError (décommentez pour tester)
@@ -178,10 +174,13 @@ function testScope() {
   // - `let b` et `const c` sont dans la TDZ → erreur si accédés avant déclaration.
   // - Dans le `if`, `var a = 100` modifie le `a` global, mais `let b` et `const c` sont locaux.
   
-  // ---
-  // 💡 Résumé des concepts
-  // | Mot-clé | Portée      | Hoisting   | Redeclarable | Réassignable |
-  // |---------|-------------|------------|--------------|--------------|
-  // | var     | Fonction    | Oui (undefined) | Oui         | Oui          |
-  // | let     | Bloc        | Oui (TDZ)  | Non          | Oui          |
-  // | const   | Bloc        | Oui (TDZ)  | Non          | Non          |
+  
+  // 💡 Résumé des concepts fondamentaux
+  // ┌─────────┬────────────┬────────────┬──────────────┬────────────────┐
+  // │ Mot-clé │ Portée     │ Hoisting   │ Redeclarable │ Réassignable   │
+  // ├─────────┼────────────┼────────────┼──────────────┼────────────────┤
+  // │ var     │ Fonction   │ Oui (undefined) │ Oui     │ Oui            │
+  // │ let     │ Bloc       │ Oui (TDZ)  │ Non          │ Oui            │
+  // │ const   │ Bloc       │ Oui (TDZ)  │ Non          │ Non            │
+  // └─────────┴────────────┴────────────┴──────────────┴────────────────┘
+  
